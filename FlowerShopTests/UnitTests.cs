@@ -9,7 +9,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            //Act
+            
            
             
         }
@@ -24,6 +24,15 @@ namespace Tests
             //Act and Assert
             batch.Received().Deliver();
             
+        }
+        [Test]
+        public void Test2()
+        {
+            var order = Substitute.For<IOrderDAO>();
+            var client = Substitute.For<IClient>();
+            Order batch = Substitute.For<Order>(order, client, false);
+            double i = batch.Price;
+            Assert.Positive(i);
         }
     }
 }
